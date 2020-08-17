@@ -35,7 +35,7 @@ app.get('/lego',async function(req,res){
 
 //user submit form
 app.post('/doSearch',async (req,res)=>{
-    let inputName = req.body.Teddy bear;
+    let inputName = req.body.Teddybear;
     let client= await MongoClient.connect(url);
     let dbo = client.db("Son");
 
