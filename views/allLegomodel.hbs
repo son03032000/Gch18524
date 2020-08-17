@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>All lego model</title>
+    <style>
+         body{
+        background-image: url("https://images.wallpapersden.com/image/download/forza-horizon-lego_65450_1920x1080.jpg");
+        background-size: 100%;
+    }
+    </style>
+</head>
+<body>
+    <table class="table bordered">
+    <th>
+    <a href="/lego" style="color:black">All lego model</a>
+    </th>
+    <th>
+    <a href="insert" style="color:black">Add lego model</a>
+    </th>
+    <th><form action="/doSearch" method="post">
+    Helmet name<input type="text" name="Helmet" id="">
+    <input type="submit" value="Search">
+    </form>
+    </th>
+
+    </table>
+    <table class="table bordered">
+        <thead>
+             <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Size</th>  
+              <th>Price</th>
+              <th>Amount</th>
+              <th style ="color:black;">Delete</th>
+              <th style ="color:burlywood;">Update</th>
+            </tr>
+        </thead>
+        {{#each model}}
+        <tr>
+            <td>{{_id}} </td>
+            <td>{{Name}} </td>
+            <td>{{Size }}</td>
+            <td>{{Price }} </td>
+            <td >{{Amount }} </td>
+            <td ><a href="/delete?id={{_id}}" style ="color:black;">Delete</a></td>
+            <td><a href="/update?id={{_id}} " style ="color:burlywood;">Update</a></td>
+        </tr>
+        {{/each}}
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>New lego model</title>
+    <style>
+        body{
+        background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2016/04/18/932646/3e5eb27c8e6dc68f18ebdc48b7cd940c-1000.jpg");
+        background-size: 100%;
+    }
+            table{ 
+        margin: 0 auto;
+        width:500px;
+        height:50px;
+        padding-top: 97px;
+        padding-bottom: 30px;
+    }
+    </style>
+</head>
+<body>
+
+    <table class="table bordered">
+    <th>
+    <a href="/lego" style="color:black">All lego model</a>
+    </th>
+    <th>
+    <a href="insert" style="color:black">Add lego model</a>
+    </th>
+    <th><form action="/doSearch" method="post">
+    Lego model <input type="text" name="Legomodel" id="">
+    <input type="submit" value="Search">
+    </form>
+    </th>
+
+    </table>
+
+    <form action="/doInsert" method="post">
+    <table style="text-align:left"> 
+    <tr>
+        <th>Name</th>
+        <th><input type="text" name="txtName" id=""></th>  
+        <th><label for="" style="color:white; blink: 1s">{{model.nameError}}</label></th>      
+    </tr>
+
+    <tr>
+        <th>Size</th>
+        <th><input type="text" name="txtSize" id=""></th>
+    </tr>
+        <th>Price</th>
+        <th><input type="text" name="txtPrice" id=""></th>
+    <tr>
+        <th>Amount</th>
+        <th><input type="text" name="txtAmount" id=""></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th><input type="submit" value="Insert"></th>
+    </tr>
+    </table>
+    </form>
+</body>
+</html>
