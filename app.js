@@ -40,12 +40,14 @@ app.post('/doSearch',async (req,res)=>{
     let dbo = client.db("Son");
 
 //tìm kiêm thường đúng chuẩn têntên
-    let results = await dbo.collection("Sondt").find({Name:inputName}).toArray();
-    res.render('allLegomodel',{model:results});
+    // let results = await dbo.collection("Sondt").find({Name:inputName}).toArray();
+    // res.render('allLegomodel',{model:results});
 
 //tìm kiếm không phân biệt chữ hoa thường.
-    // let results = await dbo.collection("Sondt").find({CarManufacturer: new RegExp(inputManu)}).toArray();
-    // res.render('allLegomodel',{model:results});
+    //let results = await dbo.collection("Sondt").find({Name: new RegExp(inputName)}).toArray();
+  //  res.render('allLegomodel',{model:results});
+     let results = await dbo.collection("Sondt").find({Name: new RegExp(inputName)}).toArray();
+     res.render('allLegomodel',{model:results});
 })
 
 
