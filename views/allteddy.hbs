@@ -17,11 +17,11 @@
 <body>
     <table class="table bordered">
     <th>
-    <a href="/lego" style="color:black">All Teddy bear</a>
+    <a href="/teddy" style="color:black">All Teddy bear</a>
     </th>
     <tr>
     <a href="insert" style="color:black">Add Teddy bear</a>
-    </t>
+    </tr>
     <th><form action="/doSearch" method="post">
     Teddy bear name<input type="text" name="Teddybear" id="">
     <input type="submit" value="Search">
@@ -37,8 +37,8 @@
               <th>Size</th>  
               <th>Price</th>
               <th>Amount</th>
-              <th style ="color:black;">Delete</th>
-              <th style ="color:burlywood;">Update</th>
+              <th style ="color:rgb(87, 158, 6);">Update</th>
+              <th style ="color: red;">Delete</th>
             </tr>
         </thead>
         {{#each model}}
@@ -48,8 +48,8 @@
             <td>{{Size }}</td>
             <td>{{Price }} </td>
             <td >{{Amount }} </td>
-            <td ><a href="/delete?id={{_id}}" style ="color:black;">Delete</a></td>
-            <td><a href="/update?id={{_id}} " style ="color:burlywood;">Update</a></td>
+            <td><a href="/update?id={{_id}} " style ="color:rgb(87, 158, 6);">Update</a></td>
+            <td ><a href="/delete?id={{_id}}" style ="color:red;">Delete</a></td>
         </tr>
         {{/each}}
     </table>

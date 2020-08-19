@@ -26,11 +26,11 @@ app.get('/',async function(req,res){
 
 
 //localhost:3000/student
-app.get('/lego',async function(req,res){
+app.get('/teddy',async function(req,res){
     let client= await MongoClient.connect(url);
     let dbo = client.db("Son");
     let results = await dbo.collection("Sondt").find({}).toArray();
-    res.render('allLegomodel',{model:results});
+    res.render('allteddy',{model:results});
 })
 
 //user submit form
@@ -41,12 +41,12 @@ app.post('/doSearch',async (req,res)=>{
 
 //tìm kiêm thường đúng chuẩn têntên
      let results = await dbo.collection("Sondt").find({Name:inputName}).toArray();
-     res.render('allLegomodel',{model:results});
+     res.render('allteddy',{model:results});
 
 //tìm kiếm không phân biệt chữ hoa thường.
 
      //let results = await dbo.collection("Sondt").find({Name: new RegExp(inputName,'i')}).toArray();
-     //res.render('allLegomodel',{model:results});
+     //res.render('allteddy',{model:results});
 })
 
 
@@ -86,7 +86,7 @@ app.post('/doInsert',async (req,res)=>{
     let client= await MongoClient.connect(url);
     let dbo = client.db("Son");
     await dbo.collection("Sondt").insertOne(newStudent);
-    res.redirect('/lego');
+    res.redirect('/teddy');
     }
 })
 
@@ -103,7 +103,7 @@ app.post('/doupdate',async (req,res)=>{
     let client = await MongoClient.connect(url);
     let dbo = client.db("Son");
     await dbo.collection("Sondt").updateOne(condition,Change);
-    res.redirect('/lego');
+    res.redirect('/teddy');
 })
 
 
@@ -114,7 +114,7 @@ app.get('/delete',async (req,res)=>{
     var ObjectID = require('mongodb').ObjectID;
     let condition = {"_id" : ObjectID(inputId)};
     await dbo.collection("Sondt").deleteOne(condition);
-    res.redirect('/lego');
+    res.redirect('/teddy');
 
 })
 const PORT = process.env.PORT || 3000;
