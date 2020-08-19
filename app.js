@@ -56,19 +56,8 @@ app.get('/insert',(req,res)=>{
 })
 
 
-app.get('/update',async function(req,res){
-    let inputId = req.query.id;
-    let client= await MongoClient.connect(url);
-    let dbo = client.db("Son");
-    var ObjectID = require('mongodb').ObjectID;
-    let condition = {"_id" : ObjectID(inputId)};
-    let results = await dbo.collection("Sondt").find(condition).toArray();
-    res.render('update',{model:results});
-})
 
-
-
-
+const size = ["M", "L", "S"]
 app.post('/doInsert',async (req,res)=>{
     //lấy thông tin từ người quản trị wed
     let inputName = req.body.txtName;
@@ -85,8 +74,13 @@ app.post('/doInsert',async (req,res)=>{
     }else if(isNaN(inputAmount)){
         let modelError1 =  {AmountError:"Enter number" };
         res.render('insert',{model:modelError1});
-    }
-    else{
+     }else if( !size.includes(inputSize) )
+     {
+        let modelError1 =  {SizeError:"Please input M, L or S on size" };
+        res.render('insert',{model:modelError1});
+        console.log("invalid size value");
+
+     }else{
     let client= await MongoClient.connect(url);
     let dbo = client.db("Son");
     await dbo.collection("Sondt").insertOne(newStudent);
@@ -94,6 +88,15 @@ app.post('/doInsert',async (req,res)=>{
     }
 })
 
+app.get('/update',async function(req,res){
+    let inputId = req.query.id;
+    let client= await MongoClient.connect(url);
+    let dbo = client.db("Son");
+    var ObjectID = require('mongodb').ObjectID;
+    let condition = {"_id" : ObjectID(inputId)};
+    let results = await dbo.collection("Sondt").find(condition).toArray();
+    res.render('update',{model:results});
+})
 app.post('/doupdate',async (req,res)=>{
     let inputId = req.body.txtId;
     let inputName = req.body.txtName;
