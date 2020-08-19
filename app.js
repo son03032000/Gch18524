@@ -79,10 +79,14 @@ app.post('/doInsert',async (req,res)=>{
     let newStudent = { Name: inputName, Size: inputSize, Price: inputPrice , Amount: inputAmount};
     // check xem người dùng cho nhập vào hay không
     if(inputName.trim().length == 0){
-        let modelError = {nameError:"Khong duoc de trong!"
-        , emailError:"Email khong hop le"};
+        let modelError = {nameError:"You must enter Name!"
+        , SizeError:"must enter number"};
         res.render('insert',{model:modelError});
-    }else{
+    }else if(isNaN(inputAmount)){
+        let modelError1 =  {AmountError:"Enter number" };
+        res.render('insert',{model:modelError1});
+    }
+    else{
     let client= await MongoClient.connect(url);
     let dbo = client.db("Son");
     await dbo.collection("Sondt").insertOne(newStudent);
